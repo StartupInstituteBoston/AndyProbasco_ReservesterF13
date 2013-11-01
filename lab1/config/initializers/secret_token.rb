@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Lab1::Application.config.secret_key_base = '819a3b7c15317889fee18c58466089fd6f63499a018176de8bea61b5054914f514441a39a3cb714f41c85a82c8e143a3f2977e8ee7cf393494ec04e87388a8d4'
+Lab1::Application.config.secret_key_base = 'c37bf39c47c515af9ca5cb98a819eef3bf430d0af212fdf9913489feb0ef0879ac1c9a52ec6d6b2d0de0256f97b500b58188b55d42ae50041814be13f2d4a365'
