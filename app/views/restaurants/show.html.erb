@@ -1,0 +1,19 @@
+<h1>Show</h1>
+<p>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <%= @restaurant.phone_number %>
+</p>
+
+<%= link_to "edit", edit_restaurant_path(@restaurant) %>
+<%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>

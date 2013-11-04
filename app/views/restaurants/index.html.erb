@@ -1,0 +1,13 @@
+<h1>Index</h1>
+<table>
+	<%@restaurants.each do |restaurant|%>
+		<tr>
+			<td>name: <%=restaurant.name%></td>
+			<td>description: <%=restaurant.description%></td>
+			<td>address: <%=restaurant.address%></td>
+			<td>phone number: <%=restaurant.phone_number%></td>
+			<td><%= link_to "show", restaurant_path(restaurant) %></td>
+		</tr>
+	<%end%>
+</table>
+<%= link_to "new restaurant", new_restaurant_path %>
