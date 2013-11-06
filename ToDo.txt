@@ -1,1 +1,8 @@
+- Add form validation for new restaurant
+- Add form validation for edit restaurant
 
+- unit tests
+- image uploading
+- pdf uploading
+
+- 

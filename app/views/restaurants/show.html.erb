@@ -15,5 +15,11 @@
   <%= @restaurant.phone_number %>
 </p>
 
-<%= link_to "edit", edit_restaurant_path(@restaurant) %>
-<%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
+<p>
+  <%= link_to "edit", edit_restaurant_path(@restaurant) %>
+  <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
+
+<p>
+  <img src=<%= @staticMapURL %>>
+</p>

@@ -1,3 +1,9 @@
+<% if owner_signed_in? %>
+<h3>user signed in</h3>
+<% else %>
+<h3>user not signed in</h3>
+<% end %>
+
 <h1>Index</h1>
 <table>
 	<%@restaurants.each do |restaurant|%>
