@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    
+    logger.debug @restaurant.inspect
     address = @restaurant.address.strip.squeeze.gsub(' ', '+')
     @staticMapURL = 'http://maps.googleapis.com/maps/api/staticmap?center=' + address + '&markers=' + address + '&zoom=13&size=600x300&maptype=roadmap&sensor=false'
   end
@@ -43,7 +43,7 @@ class RestaurantsController < ApplicationController
 #########################################################  
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :phone_number, :address)
+      params.require(:restaurant).permit(:name, :description, :phone_number, :address, :image)
     end
 
 end

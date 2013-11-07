@@ -12,6 +12,7 @@
 			<td>description: <%=restaurant.description%></td>
 			<td>address: <%=restaurant.address%></td>
 			<td>phone number: <%=restaurant.phone_number%></td>
+      <td><%= image_tag restaurant.image_url(:thumb) %></td>
 			<td><%= link_to "show", restaurant_path(restaurant) %></td>
 		</tr>
 	<%end%>

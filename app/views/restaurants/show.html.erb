@@ -16,6 +16,10 @@
 </p>
 
 <p>
+  <%= image_tag @restaurant.image_url(:masthead) %>
+</p>
+
+<p>
   <%= link_to "edit", edit_restaurant_path(@restaurant) %>
   <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
 </p>
