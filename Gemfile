@@ -32,6 +32,13 @@ gem 'devise'
 
 gem 'rmagick'
 gem 'carrierwave'
+gem 'factory_girl_rails'
+
+group :test do  
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+gem 'database_cleaner'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

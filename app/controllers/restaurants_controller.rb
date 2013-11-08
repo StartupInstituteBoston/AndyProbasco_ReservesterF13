@@ -8,7 +8,8 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    logger.debug @restaurant.inspect
+    #logger.debug @restaurant.inspect
+    
     address = @restaurant.address.strip.squeeze.gsub(' ', '+')
     @staticMapURL = 'http://maps.googleapis.com/maps/api/staticmap?center=' + address + '&markers=' + address + '&zoom=13&size=600x300&maptype=roadmap&sensor=false'
   end
