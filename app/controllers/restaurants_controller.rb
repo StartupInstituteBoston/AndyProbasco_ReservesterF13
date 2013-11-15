@@ -11,7 +11,11 @@ class RestaurantsController < ApplicationController
     #logger.debug @restaurant.inspect
     
     address = @restaurant.address.strip.squeeze.gsub(' ', '+')
-    @staticMapURL = 'http://maps.googleapis.com/maps/api/staticmap?center=' + address + '&markers=' + address + '&zoom=13&size=600x300&maptype=roadmap&sensor=false'
+    @staticMapURL = 'http://maps.googleapis.com/maps/api/staticmap?center=' + 
+					address + 
+					'&markers=' + 
+					address + 
+					'&zoom=13&size=600x300&maptype=roadmap&sensor=false'  
   end
 
   def new
@@ -26,25 +30,43 @@ class RestaurantsController < ApplicationController
  
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to @restaurant
+    
+    if current_owner 
+		@restaurant.owner = current_owner
+    end
+    
+    if @restaurant.save
+		redirect_to @restaurant
+	else
+		render "new"
+	end
+    
   end
  
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update(restaurant_params)
-    redirect_to @restaurant  
+    if current_owner && current_owner.id = @restaurant.owner_id
+        if @restaurant.update(restaurant_params)
+			redirect_to @restaurant
+		else
+			render "edit"
+		end
+    else
+		redirect_to @restaurant
+	end
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
+    if current_owner && current_owner.id = @restaurant.owner_id
+		@restaurant.destroy
+    end
     redirect_to restaurants_path
   end
-#########################################################  
+  
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :phone_number, :address, :image)
+      params.require(:restaurant).permit(:name, :description, :phone_number, :address, :image, :owner)
     end
 
 end

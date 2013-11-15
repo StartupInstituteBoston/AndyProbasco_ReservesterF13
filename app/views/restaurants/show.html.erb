@@ -1,3 +1,4 @@
+<%= render "welcome/toolbar" %>
 <h1>Show</h1>
 <p>
   <%= @restaurant.name %>
@@ -20,8 +21,10 @@
 </p>
 
 <p>
-  <%= link_to "edit", edit_restaurant_path(@restaurant) %>
-  <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% if current_owner.id == @restaurant.owner_id %>
+    <%= link_to "edit", edit_restaurant_path(@restaurant) %>
+    <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
 </p>
 
 <p>
