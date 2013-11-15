@@ -1,8 +1,7 @@
 <%= render "welcome/toolbar" %>
-<h1>Show</h1>
-<p>
+<h1>
   <%= @restaurant.name %>
-</p>
+</h1>
 
 <p>
   <%= @restaurant.description %>
@@ -30,3 +29,10 @@
 <p>
   <img src=<%= @staticMapURL %>>
 </p>
+
+<%= render "reservations/place_reservation" %>
+
+<% if current_owner.id == @restaurant.owner_id %>
+  <h2>Reservations</h2>
+  <%= render @restaurant.reservations %>
+<% end %>

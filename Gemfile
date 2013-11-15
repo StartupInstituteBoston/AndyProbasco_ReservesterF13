@@ -37,8 +37,9 @@ gem 'factory_girl_rails'
 group :test do  
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'simplecov'
 end
-gem 'database_cleaner'
+#gem 'database_cleaner'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
