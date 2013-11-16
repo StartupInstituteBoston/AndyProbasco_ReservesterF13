@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You've recieved a reservation request:</p>
+    <p>at: <%= @restaurant.name %></p>
+    <p>from: <%= @reservation.email %></p>
+    <p>for: <%= @reservation.requested_date_and_time %>.</p>
+    <p>message: <%= @reservation.message %> </p>
+  </body>
+</html>

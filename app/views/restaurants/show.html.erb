@@ -20,7 +20,7 @@
 </p>
 
 <p>
-  <% if current_owner.id == @restaurant.owner_id %>
+  <% if current_owner && current_owner.id == @restaurant.owner_id %>
     <%= link_to "edit", edit_restaurant_path(@restaurant) %>
     <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
   <% end %>
@@ -32,7 +32,7 @@
 
 <%= render "reservations/place_reservation" %>
 
-<% if current_owner.id == @restaurant.owner_id %>
+<% if current_owner && current_owner.id == @restaurant.owner_id %>
   <h2>Reservations</h2>
   <%= render @restaurant.reservations %>
 <% end %>
