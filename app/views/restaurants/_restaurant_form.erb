@@ -31,6 +31,7 @@
   </p>
   <p>
     <%= f.collection_select :category_ids, Category.all, :id, :name, {:selected => @restaurant.category_ids}, {:multiple => true} %>
+    <script>$("#restaurant_category_ids").chosen();</script>
   </p>
    <p>
     <%= f.file_field :image %>
