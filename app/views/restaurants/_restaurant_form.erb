@@ -12,10 +12,10 @@
 <% end %>
 
 
-<%= form_for @restaurant, :html => {:multipart => true} do |f|%>
+<%= form_for @restaurant, :html => {:multipart => true, "data-validate" => 'parsley'} do |f|%>
   <p>
     <%= f.label :name %>
-    <%= f.text_field :name%>
+    <%= f.text_field :name, "data-required" => true%>
   </p>
   <p>
     <%= f.label :description %>
@@ -30,6 +30,9 @@
     <%= f.text_field :phone_number %>
   </p>
   <p>
+    <%= f.collection_select :category_ids, Category.all, :id, :name, {:selected => @restaurant.category_ids}, {:multiple => true} %>
+  </p>
+   <p>
     <%= f.file_field :image %>
   </p>
   <%=f.submit%>

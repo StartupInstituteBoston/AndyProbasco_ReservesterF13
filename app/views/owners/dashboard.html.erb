@@ -1,0 +1,17 @@
+<%= render "welcome/toolbar" %>
+<h1>Dashboard</h1>
+<table>
+	<%@owner.restaurants.each do |restaurant|%>
+		<tr>
+			<td>name: <%=restaurant.name%></td>
+			<td>description: <%=restaurant.description%></td>
+			<td>address: <%=restaurant.address%></td>
+			<td>phone number: <%=restaurant.phone_number%></td>
+      <td><%= image_tag restaurant.image_url(:thumb) %></td>
+			<td><%= link_to "show", restaurant_path(restaurant) %></td>
+		</tr>
+	<%end%>
+</table>
+<% if owner_signed_in? %>
+  <%= link_to "new restaurant", new_restaurant_path %>
+<% end %>

@@ -14,6 +14,10 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><%= link_to "Restaurants", restaurants_path %></li>
+      <% if owner_signed_in? %>
+        <li><%= link_to "dashboard", dashboard_path %></li>
+      <% end %>
+      
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if owner_signed_in? %>

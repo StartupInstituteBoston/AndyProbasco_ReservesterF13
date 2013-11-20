@@ -1,0 +1,12 @@
+<%= render "welcome/toolbar" %>
+<h1>
+  <%= @category.name %>
+</h1>
+
+<p>
+Restaurants:
+
+<% @category.restaurants.each do |restaurant| %>
+  <%= restaurant.name %>
+<% end %>
+</p>

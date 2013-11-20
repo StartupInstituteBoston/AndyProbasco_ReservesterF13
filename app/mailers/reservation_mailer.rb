@@ -2,7 +2,6 @@ class ReservationMailer < ActionMailer::Base
   default :from => "noreply@localhost"
 
     def reservation_notification(reservation, restaurant)
-      
       @reservation = reservation
       @restaurant = restaurant
       @owner = Owner.find(@restaurant.owner_id)

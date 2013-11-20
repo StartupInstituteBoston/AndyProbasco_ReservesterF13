@@ -6,6 +6,13 @@
 <p>
   <%= @restaurant.description %>
 </p>
+<p>
+Categories:
+
+<% @restaurant.categories.each do |category| %>
+  <%= category.name %>
+<% end %>
+</p>
 
 <p>
   <%= @restaurant.address %>

@@ -45,9 +45,16 @@ class RestaurantsController < ApplicationController
  
   def update
     @restaurant = Restaurant.find(params[:id])
+
     if current_owner && current_owner.id = @restaurant.owner_id
         if @restaurant.update(restaurant_params)
-			redirect_to @restaurant
+          
+          @restaurant.categories.clear
+          params[:restaurant][:category_ids].each do |category_id|
+            @restaurant.category_restaurants.create!(category_id: category_id)
+          end
+          
+          redirect_to @restaurant
 		else
 			render "edit"
 		end

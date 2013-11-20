@@ -39,7 +39,17 @@ group :test do
   gem 'rspec-rails'
   gem 'simplecov'
 end
-#gem 'database_cleaner'
+gem 'parsley-rails'
+
+#chosen gem
+gem 'chosen-rails'
+gem 'compass-rails', github: 'Compass/compass-rails'
+
+
+
+
+
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
