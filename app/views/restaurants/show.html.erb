@@ -2,6 +2,16 @@
 <h1>
   <%= @restaurant.name %>
 </h1>
+<p>
+  TOTAL STARS <%= @restaurant.starred_by.count %>
+  <% if current_user && current_user.starred_restaurants.find_by(:id => @restaurant.id) %>
+    <%= link_to "UNSTAR THIS", @restaurant.id.to_s+"/stars/"+current_user.starred_restaurants.find_by(:id => @restaurant.id).id.to_s, :method => :delete %>
+  <% elsif current_user %>
+    <%= link_to "STAR THIS", restaurant_stars_path(@restaurant), :method => :post %>
+  <% end %>
+  
+
+</p>
 
 <p>
   <%= @restaurant.description %>
@@ -27,7 +37,7 @@ Categories:
 </p>
 
 <p>
-  <% if current_owner && current_owner.id == @restaurant.owner_id %>
+  <% if current_user && current_user.id == @restaurant.user_id %>
     <%= link_to "edit", edit_restaurant_path(@restaurant) %>
     <%= link_to "destroy", restaurant_path(@restaurant), method: :delete, data: {confirm: 'Are you sure?'} %>
   <% end %>
@@ -39,7 +49,7 @@ Categories:
 
 <%= render "reservations/place_reservation" %>
 
-<% if current_owner && current_owner.id == @restaurant.owner_id %>
+<% if current_user && current_user.id == @restaurant.user_id %>
   <h2>Reservations</h2>
   <%= render @restaurant.reservations %>
 <% end %>

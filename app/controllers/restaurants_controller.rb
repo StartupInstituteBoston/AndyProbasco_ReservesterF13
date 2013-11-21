@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   
- # before_filter :authenticate_owner!
+ # before_filter :authenticate_user!
   
   def index
     @restaurants = Restaurant.all
@@ -15,11 +15,11 @@ class RestaurantsController < ApplicationController
 					address + 
 					'&markers=' + 
 					address + 
-					'&zoom=13&size=600x300&maptype=roadmap&sensor=false'  
+					'&zoom=13&size=600x300&maptype=roadmap&sensor=false' 
   end
 
   def new
-	@restaurant = Restaurant.new
+    @restaurant = Restaurant.new
   end
 
   def edit
@@ -31,22 +31,22 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     
-    if current_owner 
-		@restaurant.owner = current_owner
+    if current_user
+      @restaurant.user = current_user
     end
     
     if @restaurant.save
-		redirect_to @restaurant
-	else
-		render "new"
-	end
+      redirect_to @restaurant
+    else
+      render "new"
+    end
     
   end
  
   def update
     @restaurant = Restaurant.find(params[:id])
 
-    if current_owner && current_owner.id = @restaurant.owner_id
+    if current_user && current_user.id = @restaurant.user_id
         if @restaurant.update(restaurant_params)
           
           @restaurant.categories.clear
@@ -65,7 +65,7 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    if current_owner && current_owner.id = @restaurant.owner_id
+    if current_user && current_user.id = @restaurant.user_id
 		@restaurant.destroy
     end
     redirect_to restaurants_path
@@ -73,7 +73,7 @@ class RestaurantsController < ApplicationController
   
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :phone_number, :address, :image, :owner)
+      params.require(:restaurant).permit(:name, :description, :phone_number, :address, :image, :user)
     end
 
 end

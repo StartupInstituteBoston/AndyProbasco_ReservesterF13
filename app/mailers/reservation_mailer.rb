@@ -4,7 +4,7 @@ class ReservationMailer < ActionMailer::Base
     def reservation_notification(reservation, restaurant)
       @reservation = reservation
       @restaurant = restaurant
-      @owner = Owner.find(@restaurant.owner_id)
-      mail(:to => @owner.email, :subject => "reservation requested at " + @restaurant.name)      
+      @user = User.find(@restaurant.user_id)
+      mail(:to => @user.email, :subject => "reservation requested at " + @restaurant.name)      
     end
 end
